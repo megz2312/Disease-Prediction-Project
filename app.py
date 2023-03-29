@@ -14,7 +14,7 @@ def cancer():
 def ValuePredictor(to_predict_list, size):
     to_predict = np.array(to_predict_list).reshape(1,size)
     if(size==7):
-        loaded_model = joblib.load(r'C:\Users\Mahesh Sharma\Desktop\HealthApp\Indivisual_Deployment\Kidney_API\kidney_model.pkl')
+        loaded_model = joblib.load('kidney_model.pkl')
         result = loaded_model.predict(to_predict)
     return result[0]
 
