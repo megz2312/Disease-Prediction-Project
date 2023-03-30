@@ -1,38 +1,42 @@
-from flask import Flask, render_template, url_for, flash, redirect
-import joblib
-from flask import request
 import numpy as np
+import pandas as pd
+from flask import Flask, request, render_template
+from sklearn import preprocessing
+import pickle
+from collections.abc import Mapping
+from collections.abc import MutableMapping
+from collections.abc import Sequence
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
+# model = pickle.load(open('logreg.pkl', 'rb'))
+model = pickle.load(open('kidneymodel.pkl', 'rb'))
+cols=['tenure', 'SeniorCitizen', 'Partner','gender','PhoneService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'PaperlessBilling', 'InternetService_DSL', 'InternetService_Fiber optic']
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-@app.route("/")
-
-@app.route("/kidney")
-def cancer():
-    return render_template("kidney.html")
-
-def ValuePredictor(to_predict_list, size):
-    to_predict = np.array(to_predict_list).reshape(1,size)
-    if(size==7):
-        loaded_model = joblib.load(r'C:\Users\Mahesh Sharma\Desktop\HealthApp\Indivisual_Deployment\Kidney_API\kidney_model.pkl')
-        result = loaded_model.predict(to_predict)
-    return result[0]
-
-@app.route('/predict', methods = ["POST"])
+@app.route('/predict',methods=['POST'])
 def predict():
-    if request.method == "POST":
-        to_predict_list = request.form.to_dict()
-        to_predict_list = list(to_predict_list.values())
-        to_predict_list = list(map(float, to_predict_list))
-         #diabetes
-        if(len(to_predict_list)==7):
-            result = ValuePredictor(to_predict_list,7)
+    feature_list = request.form.to_dict()
+    feature_list = list(feature_list.values())
+    feature_list = list(map(float, feature_list))
+    final_features = np.array(feature_list).reshape(1, 7) 
+#     k=str(final_features)
+    prediction = model.predict(final_features)
+    output = int(prediction[0])
     
-    if(int(result)==1):
-        prediction = "Sorry you chances of getting the disease. Please consult the doctor immediately"
+    if output == 1:
+        text = "Consult doctor immediately. There is a high probability of you getting the disease."
     else:
-        prediction = "No need to fear. You have no dangerous symptoms of the disease"
-    return(render_template("result.html", prediction_text=prediction))       
+        text = "Do not worry. There is a low probability of you getting the disease."
+    
+    prediction_texts='Model results : '+str(text)
+#     pred=prediction_texts+'     '+k
+#     pred=prediction_text
+#     return render_template('index.html', prediction_text='Employee is more likely to {}'.format(text))
+    return render_template('index.html', prediction_text=prediction_texts)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
