@@ -37,7 +37,7 @@ def predict():
 #     pred=prediction_text
 #     return render_template('index.html', prediction_text='Employee is more likely to {}'.format(text))
 #    return render_template('index.html', prediction_text=prediction_texts)
-    return render_template('result.html', prediction_text=prediction_texts)
+    return render_template('results.html', prediction_text=prediction_texts)
 
 
 
