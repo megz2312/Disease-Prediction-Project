@@ -7,13 +7,15 @@ from collections.abc import Mapping
 from collections.abc import MutableMapping
 from collections.abc import Sequence
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 # model = pickle.load(open('logreg.pkl', 'rb'))
 model = pickle.load(open('kidneymodel.pkl', 'rb'))
-cols=['tenure', 'SeniorCitizen', 'Partner','gender','PhoneService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'PaperlessBilling', 'InternetService_DSL', 'InternetService_Fiber optic']
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    #return render_template('index.html')
+    return render_template("kidney.html")
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -34,7 +36,8 @@ def predict():
 #     pred=prediction_texts+'     '+k
 #     pred=prediction_text
 #     return render_template('index.html', prediction_text='Employee is more likely to {}'.format(text))
-    return render_template('index.html', prediction_text=prediction_texts)
+#    return render_template('index.html', prediction_text=prediction_texts)
+    return render_template('result.html', prediction_text=prediction_texts)
 
 
 
