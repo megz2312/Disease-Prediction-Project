@@ -36,7 +36,7 @@ def predict():
         #text = "Do not worry. There is a low probability of you getting the disease."
 #     prediction_texts='Model results : '+str(text)
 #     prediction_texts="Model Results :\n{}".format(str(text))
-    prediction_texts="Model Results :\n\n{}".format(str(text))
+    prediction_texts="\n\n{}".format(str(text))
 #     pred=prediction_texts+'     '+k
 #     pred=prediction_text
 #     return render_template('index.html', prediction_text='Employee is more likely to {}'.format(text))
