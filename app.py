@@ -25,14 +25,18 @@ def predict():
     final_features = np.array(feature_list).reshape(1, 7) 
 #     k=str(final_features)
     prediction = model.predict(final_features)
+    predictprob = model.predict_proba(final_features)
     output = int(prediction[0])
     
     if output == 1:
-        text = "Consult doctor immediately. There is a high probability of you getting the disease."
+#         text = "Consult doctor immediately. There is a high probability of you getting the disease."
+        text="The Best-performing Random Forrest model is {}% confident that the individual has kidney disease.\n\nConsult your doctor immediately.".format(round(predictprob[0][1]*100,2))
     else:
-        text = "Do not worry. There is a low probability of you getting the disease."
-    
-    prediction_texts='Model results : '+str(text)
+        text="The Best-performing Random Forrest model is {}% confident that the individual does not have kidney disease.\n\nPlease do not be worried.".format(round(predictprob[0][0]*100,2))
+        #text = "Do not worry. There is a low probability of you getting the disease."
+#     prediction_texts='Model results : '+str(text)
+#     prediction_texts="Model Results :\n{}".format(str(text))
+    prediction_texts="Model Results :\n\n{}".format(str(text))
 #     pred=prediction_texts+'     '+k
 #     pred=prediction_text
 #     return render_template('index.html', prediction_text='Employee is more likely to {}'.format(text))
