@@ -1,6 +1,83 @@
 <!doctype html>
-<html>
-   <body>
-       <h1> {{ prediction_text }}</h1>
-   </body>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/img/health.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+    html,
+    body,
+    header,
+    #intro {
+    height: 100%;
+    
+    }
+    
+    img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 45px;
+    paddint-top: 50px;
+
+    }
+    .row {    margin-right: 25px;
+    margin-left: 25px;padding-bottom: 45px;}
+    .col-lg-6 col-md-6 col-12 my-auto {
+    padding-top: 30px;
+}
+
+
+    
+    </style>
+    <title>Kidney Disease Prediction</title>
+  </head>
+  <body>
+    <headr>
+        
+    </headr>  <!--Mask-->
+      <div id="intro" class="container-fluid view ">
+        <h1 class="text-center text-capitalize pt-5">What are your chances of getting Kidney Disease?</h1><h3 class="text-center text">FIND OUT HERE!</h3>
+        <!--<hr class="w-75 mx-auto pt-1">-->
+        <div class="row mb-5">
+          <div class="col-lg-6 col-md-6 col-12 my-auto" style="padding-top:40px;">
+         
+            <img src="https://cdn.aarp.net/content/dam/aarp/health/conditions_treatments/2021/10/1140-kidney-disease.jpg" alt="" style="width: 98%; height: 98%; align-self: center;" class="ddd">
+            
+
+          </div>
+          <div class="col-lg-6 col-md-6 col-12" style="padding-top: 15px;">
+            
+            <div class="texty" style="align: center; padding-left: 20px;
+    font-size: 29px; "><br><br>
+         {{ prediction_text }}</div>
+          </div>
+         
+          
+        </div>
+        
+        <div style="position:relative;font-family:'Open Sans',Helvetica,Arial,sans-serif;font-size:12px;line-height:36px;text-align:center;background-color:#FAFAFA;height:35px;margin-top:10px;overflow:hidden;">
+<span style="display:inline;margin-right:10px;line-height:38px;font-family:Questrial,sans-serif;text-transform:uppercase;color:#A3A3A3;font-size:10px;letter-spacing:2px;white-space:nowrap;">MODEL AND UI CREATED AND DEPLOYED BY MEGHNA ASHOK @ 2023</span></a>
+</div>
+      </div>
+      
+      <!--/.Mask-->
+    </header>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+  </body>
 </html>
